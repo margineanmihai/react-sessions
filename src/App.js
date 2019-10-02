@@ -23,16 +23,16 @@ const App = () => {
                 </Movie>
                 <Movie name="12 Angry Men"
                        releaseYear="1957"
-                       releaseYear="Sidney Lumet"/>
+                       director="Sidney Lumet"/>
                 <Movie name="Life Is Beautiful"
                        releaseYear="1997"
-                       releaseYear="Roberto Benigni">
+                       director="Roberto Benigni">
                     <MovieDetails oscarsNominations="7"
                                   oscarsWon="3"/>
                 </Movie>
                 <Movie name="The Good, the Bad and the Ugly"
                        releaseYear="1966"
-                       releaseYear="Sergio Leone"/>
+                       director="Sergio Leone"/>
             </ul>
         </div>
     );
