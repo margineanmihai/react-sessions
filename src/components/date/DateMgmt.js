@@ -29,12 +29,18 @@ class DateMgmt extends Component {
 
 	handleIncrement = () => {
 		const newDay = this.state.day + 1;
+		const date = new Date();
 		newDay > this.state.lastDayCrMonth
 			? this.setState((state) => {
 					return {
 						day: 1,
 						previousMonth: state.month,
-						month: state.nextMonth
+						monthNo: state.monthNo + 1,
+						month: new Date(date.getFullYear(), state.monthNo + 1).toLocaleString('default', {
+							month: 'long'
+						}),
+						lastDayPreviousMonth: new Date(date.getFullYear(), state.monthNo + 1, 0).getDate(),
+						lastDayCrMonth: new Date(date.getFullYear(), state.monthNo + 2, 0).getDate()
 					};
 				})
 			: this.setState((state) => {
@@ -46,12 +52,18 @@ class DateMgmt extends Component {
 
 	handleDecrement = () => {
 		const newDay = this.state.day - 1;
+		const date = new Date();
 		newDay === 0
 			? this.setState((state) => {
 					return {
 						day: state.lastDayPreviousMonth,
 						nextMonth: state.month,
-						month: state.previousMonth
+						monthNo: state.monthNo - 1,
+						month: new Date(date.getFullYear(), state.monthNo - 1).toLocaleString('default', {
+							month: 'long'
+						}),
+						lastDayPreviousMonth: new Date(date.getFullYear(), state.monthNo - 1, 0).getDate(),
+						lastDayCrMonth: new Date(date.getFullYear(), state.monthNo, 0).getDate()
 					};
 				})
 			: this.setState((state) => {
