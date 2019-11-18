@@ -19,6 +19,20 @@ class InputMgmt extends Component {
 
 	render() {
 		const { name, email, phone } = this.state;
+		const nameColor = name.length < 5 ? 'green' : 'orange';
+		const emailColor = email.length < 4 ? 'green' : 'orange';
+		const phoneColor = phone.length < 4 ? 'green' : 'orange';
+		const textStyle = {
+			nameColor: {
+				color: nameColor
+			},
+			emailColor: {
+				color: emailColor
+			},
+			phoneColor: {
+				color: phoneColor
+			}
+		};
 		return (
 			<Fragment>
 				<p>
@@ -35,7 +49,9 @@ class InputMgmt extends Component {
 				</p>
 
 				<p>
-					Name: {name} - Email: {email} - Phone: {phone}
+					Name: <span style={textStyle.nameColor}>{name} </span> - Email:{' '}
+					<span style={textStyle.emailColor}>{email} </span> - Phone:{' '}
+					<span style={textStyle.phoneColor}>{phone} </span>
 				</p>
 			</Fragment>
 		);

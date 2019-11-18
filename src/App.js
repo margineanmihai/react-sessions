@@ -3,6 +3,7 @@ import './App.css';
 import Person from './components/Person';
 import DateMgmt from './components/date/DateMgmt';
 import InputMgmt from './components/inputs/InputMgmt';
+import DateConditionals from './components/session5/DateConditionals';
 
 class App extends Component {
 	state = {
@@ -38,30 +39,46 @@ class App extends Component {
 
 	render() {
 		const { persons, title, inputText } = this.state;
-
+		const styles = {
+			titleStyling: {
+				color: 'green'
+			},
+			componentStyling: {
+				background: 'linear-gradient(to top, gray, 30%, lightgray)',
+				borderRadius: '15px',
+				padding: '10px 0',
+				margin: '10px 0'
+			}
+		};
 		return (
 			<div className="App">
-				<h1>{title}</h1>
-				<input value={inputText} onChange={this.inputChangeHandler} />
-				<p> {inputText}</p>
-				<button onClick={this.addPersonHandler}>Add Person</button>
-				{persons.map((person) => (
-					<Person
-						key={person.id}
-						name={person.name}
-						age={person.age}
-						onNameClick={this.nameClickHandler.bind(this, person.name)}
-						onNameInputChange={(event) => this.nameInputChangeHandler(event, person.id)}
-					>
-						<p>{person.info}</p>
-					</Person>
-				))}
-				<hr />
-				<h2>Homework Session 4</h2>
-				<h3>Exercise 1</h3>
-				<DateMgmt />
-				<h3>Exercise 2</h3>
-				<InputMgmt />
+				<div style={styles.componentStyling}>
+					{(!!persons || !!title) && <h1 style={styles.titleStyling}>{title}</h1>}
+					<input value={inputText} onChange={this.inputChangeHandler} />
+					<p> {inputText}</p>
+					<button className="custom-button" onClick={this.addPersonHandler}>
+						Add Person
+					</button>
+					{persons.map((person) => (
+						<Person
+							key={person.id}
+							name={person.name}
+							age={person.age}
+							onNameClick={this.nameClickHandler.bind(this, person.name)}
+							onNameInputChange={(event) => this.nameInputChangeHandler(event, person.id)}
+						>
+							<p>{person.info}</p>
+						</Person>
+					))}
+				</div>
+				<div style={styles.componentStyling}>
+					<h2 className="homeworkTitle">Homework Session 4</h2>
+					<h3>Exercise 1</h3>
+					<DateMgmt />
+					<h3>Exercise 2</h3>
+					<InputMgmt />
+				</div>
+				<DateConditionals styles={styles} />
 			</div>
 		);
 	}

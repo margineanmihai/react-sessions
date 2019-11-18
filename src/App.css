@@ -1,3 +1,41 @@
 .App {
-  text-align: center;
+	text-align: center;
+}
+
+.homeworkTitle {
+	color: blue;
+}
+
+.insertedText {
+	color: green;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+	margin: 10px auto;
+}
+
+.custom-button {
+	min-width: 125px;
+	width: auto;
+	height: 30px;
+	letter-spacing: 0.5px;
+	line-height: 30px;
+	padding: 0 20px 0 20px;
+	font-size: 14px;
+	background-color: rgba(112, 107, 107, 0.959);
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed';
+	font-weight: bolder;
+	border: none;
+	cursor: pointer;
+}
+
+.custom-button:hover {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
 }
