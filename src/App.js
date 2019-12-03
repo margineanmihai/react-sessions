@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Person from './components/Person';
+// import './App.css';
+import styles from './App.module.css';
+import classnames from 'classnames';
+import Person from './components/person/Person';
 import DateMgmt from './components/date/DateMgmt';
 import InputMgmt from './components/inputs/InputMgmt';
 import DateConditionals from './components/session5/DateConditionals';
@@ -39,24 +41,17 @@ class App extends Component {
 
 	render() {
 		const { persons, title, inputText } = this.state;
-		const styles = {
-			titleStyling: {
-				color: 'green'
-			},
-			componentStyling: {
-				background: 'linear-gradient(to top, gray, 30%, lightgray)',
-				borderRadius: '15px',
-				padding: '10px 0',
-				margin: '10px 0'
-			}
-		};
 		return (
-			<div className="App">
-				<div style={styles.componentStyling}>
-					{(!!persons || !!title) && <h1 style={styles.titleStyling}>{title}</h1>}
+			<div className={styles.App}>
+				<div className="componentStyling">
+					{(!!persons || !!title) && (
+						<h1 className={classnames(styles.App, styles.App2, { [styles.App3]: title.length > 3 })}>
+							{title}
+						</h1>
+					)}
 					<input value={inputText} onChange={this.inputChangeHandler} />
-					<p> {inputText}</p>
-					<button className="custom-button" onClick={this.addPersonHandler}>
+					<p className={styles.inputText}> {inputText}</p>
+					<button className="customButton" onClick={this.addPersonHandler}>
 						Add Person
 					</button>
 					{persons.map((person) => (
@@ -71,7 +66,7 @@ class App extends Component {
 						</Person>
 					))}
 				</div>
-				<div style={styles.componentStyling}>
+				<div className="componentStyling">
 					<h2 className="homeworkTitle">Homework Session 4</h2>
 					<h3>Exercise 1</h3>
 					<DateMgmt />

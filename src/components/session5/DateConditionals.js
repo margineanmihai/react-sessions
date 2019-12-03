@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styles from './DateConditionals.module.css';
 class DateConditionals extends Component {
 	state = {
 		seconds: new Date().getSeconds(),
@@ -13,10 +13,9 @@ class DateConditionals extends Component {
 
 	render() {
 		const { day, hours, minutes, seconds } = this.state;
-		const { styles } = this.props;
 		return (
-			<div style={styles.componentStyling}>
-				<h2 className="homeworkTitle">Homework Session 5</h2>
+			<div className="componentStyling">
+				<h2 className={styles.homeworkTitle}>Homework Session 5</h2>
 				<h3>Exercise 1</h3>
 				day {day} - {hours}:{minutes}:{seconds}
 				<p>{seconds < 30 ? 'First half of the minute' : 'Second half of the minute'}</p>

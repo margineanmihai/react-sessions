@@ -2,8 +2,28 @@
 	text-align: center;
 }
 
-.insertedText {
+.App2 {
+	color: lightseagreen;
+}
+
+.App3 {
+	font-size: 24px;
+	font-style: italic;
+}
+
+.title {
 	color: green;
+}
+.inputText {
+	composes: title;
+	font-weight: bold;
+}
+.homeworkTitle {
+	color: blue;
+}
+
+.insertedText {
+	composes: title;
 }
 
 .buttons {
@@ -13,7 +33,7 @@
 	margin: 10px auto;
 }
 
-.custom-button {
+:global(.customButton) {
 	min-width: 125px;
 	width: auto;
 	height: 30px;
@@ -30,8 +50,15 @@
 	cursor: pointer;
 }
 
-.custom-button:hover {
+:global(.customButton:hover) {
 	background-color: white;
 	color: black;
 	border: 1px solid black;
+}
+
+:global(.componentStyling) {
+	background: linear-gradient(to top, gray, 30%, lightgray);
+	border-radius: 15px;
+	padding: 10px 0;
+	margin: 10px 0;
 }

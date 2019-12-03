@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Person.css';
+import personStyle from './Person.module.css';
 class Person extends Component {
 	state = {
 		inputShowing: false
@@ -17,22 +17,22 @@ class Person extends Component {
 		// console.log(inputShowing);
 		return (
 			<div>
-				<p className="person">
+				<p className={personStyle.person}>
 					Hello, I'm{' '}
-					<span className="insertedText" onClick={onNameClick}>
+					<span className={personStyle.insertedText} onClick={onNameClick}>
 						{name}
 					</span>{' '}
 					and I'm {age} years old.
 				</p>
 				{!inputShowing && (
-					<button className="custom-button" onClick={this.editNameHandler}>
+					<button className="customButton" onClick={this.editNameHandler}>
 						Edit Name
 					</button>
 				)}
 				{inputShowing && (
 					<div>
 						<input value={name} onChange={onNameInputChange} />
-						<button className="custom-button" onClick={this.okBtnHandler}>
+						<button className="customButton" onClick={this.okBtnHandler}>
 							OK
 						</button>
 					</div>
