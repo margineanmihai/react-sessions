@@ -1,0 +1,23 @@
+.itemContainer {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.addTask {
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 40px;
+}
+
+.addTaskForm {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 40px;
+}
+
+.addForm input {
+    margin-right: 10px;
+}

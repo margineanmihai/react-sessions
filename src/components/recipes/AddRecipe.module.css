@@ -1,0 +1,30 @@
+.addRecipe {
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 40px;
+}
+
+.addRecipeForm {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 40px;
+}
+
+.inputBlock {
+	margin: 10px 0;
+}
+.inputBlock input {
+	width: 195px;
+}
+
+.inputBlock * {
+	vertical-align: middle;
+}
+
+.inputBlock label {
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	margin-right: 20px;
+}

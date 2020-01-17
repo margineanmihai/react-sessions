@@ -6,6 +6,8 @@ import Person from './components/person/Person';
 import DateMgmt from './components/date/DateMgmt';
 import InputMgmt from './components/inputs/InputMgmt';
 import DateConditionals from './components/session5/DateConditionals';
+import Recipes from './components/recipes/Recipes';
+import ToDoApp from './components/todoapp/ToDoApp';
 
 class App extends Component {
 	state = {
@@ -74,6 +76,14 @@ class App extends Component {
 					<InputMgmt />
 				</div>
 				<DateConditionals styles={styles} />
+
+				<div className="componentStyling">
+					<Recipes />
+				</div>
+
+				<div className="componentStyling">
+					<ToDoApp />
+				</div>
 			</div>
 		);
 	}
