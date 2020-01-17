@@ -23,7 +23,7 @@ class AddRecipe extends Component {
 	};
 	saveRecipe = (e) => {
 		const { title, ingredients, instructions } = this.state;
-		const recipe = { title: title, ingredients: ingredients, instructions: instructions };
+		const recipe = { title: title, ingredients: ingredients.split(','), instructions: instructions };
 		const { addRecipeHandler } = this.props;
 		this.setState({ showAddRecipe: true, title: '', ingredients: '', instructions: '' });
 		addRecipeHandler(recipe);

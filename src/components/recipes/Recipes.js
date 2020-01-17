@@ -29,24 +29,32 @@ class Recipes extends Component {
 			// 		'Toate ingredientele se amestecă într-un shaker, mai puțin romul negru sau maro, care se adaugă la final. Reține că Mai Tai este un cocktail destul de complex și nu vei găsi nicăieri două rețete identice. Poți înlocui sucul de portocale cu curaçao de portocale și poți adăuga sirop de migdale sau zahăr brun pentru a îndulci băutura. De obicei, Mai Tai se ornează cu o cireașă și se servește întotdeauna în pahar rocks.'
 			// }
 		]
-    };
-    
-    componentDidMount() {
-        axios.get("http://172.22.13.38:1323/recipes/5d6e10e384d3303da1547267")
-        .then(response => {
-            this.setState({recipes:response.data})
-        });
-    }
+	};
+
+	componentDidMount() {
+		axios.get('http://172.22.13.38:1323/recipes/5d6e10e384d3303da1547267').then((response) => {
+			this.setState({ recipes: response.data });
+		});
+	}
+
 	deleteRecipe = (id) => {
-		const recipes = this.state.recipes.filter((element) => element.id !== id);
-		this.setState({ recipes });
+		axios.delete(`http://172.22.13.38:1323/recipes/${id}`).then(() => {
+			const recipes = this.state.recipes.filter((recipe) => recipe.id !== id);
+			this.setState({ recipes: recipes });
+		});
 	};
 
 	addRecipe = (newRecipe) => {
-		const recipes = this.state.recipes;
-		newRecipe.id = Math.random();
-		recipes.push(newRecipe);
-		this.setState({ recipes });
+		axios
+			.post('http://172.22.13.38:1323/recipes/5d6e10e384d3303da1547267', {
+				title: newRecipe.title,
+				ingredients: newRecipe.ingredients,
+				instructions: newRecipe.instructions
+			})
+			.then((response) => {
+				const recipes = [ ...this.state.recipes, response.data ];
+				this.setState({ recipes });
+			});
 	};
 
 	render() {
