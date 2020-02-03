@@ -4,9 +4,15 @@ import styles from './Login.module.css';
 
 class Login extends Component {
 	state = {
-		email: '',
-		password: ''
+		email: 'm1@test.com',
+		password: 'mihai1',
+		errMsg: ''
 	};
+
+	componentDidMount() {
+		const userID = localStorage.getItem('userID');
+		if (userID) this.props.history.push('/recipes');
+	}
 
 	onEmailChange = (e) => {
 		this.setState({ email: e.target.value });
@@ -16,25 +22,32 @@ class Login extends Component {
 		this.setState({ password: e.target.value });
 	};
 
+	handleLogin = (response) => {
+		console.log('handleLogin response = ', response);
+		if (response.status === 200) {
+			localStorage.setItem('userID', response.data.id);
+			this.props.history.push('/recipes');
+		} else {
+			this.setState({ errorMsg: response.data.Message });
+		}
+	};
+
 	login = () => {
-		const { handleLogin } = this.props;
 		axios
 			.post('http://172.22.13.38:1323/users/login', {
 				email: this.state.email,
 				password: this.state.password
 			})
 			.then((response) => {
-				console.log('login response = ', response);
-				handleLogin(response);
+				this.handleLogin(response);
 			})
 			.catch((error) => {
 				console.log('login error = ', error.response);
-				handleLogin(error.response);
+				this.handleLogin(error.response);
 			});
 	};
 	render() {
-		const { email, password } = this.state;
-		const { errorMsg } = this.props;
+		const { email, password, errorMsg } = this.state;
 		return (
 			<div className={styles.card}>
 				<h3>Login</h3>
@@ -49,7 +62,7 @@ class Login extends Component {
 					<input type="password" value={password} onChange={this.onPasswordChange} />
 				</div>
 				{errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
-				<div>
+				<div className={styles.centerBtn}>
 					<button className="customButton" onClick={this.login}>
 						Login
 					</button>

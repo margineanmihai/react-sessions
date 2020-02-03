@@ -42,7 +42,7 @@ class Register extends Component {
 					<input type="password" value={password} onChange={this.onPasswordChange} />
 				</div>
 
-				<div>
+				<div className={styles.centerBtn}>
 					<button className="customButton" onClick={this.register}>
 						Save
 					</button>

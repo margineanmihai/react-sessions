@@ -2,3 +2,33 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.card {
+	flex: 1;
+	flex-basis: 50%;
+	height: auto;
+	width: 98%;
+	margin: 20px;
+	padding-bottom: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 15px;
+	background-color: lightgray;
+}
+
+.cardNoRecipes {
+	flex: 1;
+	flex-basis: 50%;
+	height: auto;
+	width: 30%;
+	margin: 20px;
+	padding-bottom: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 15px;
+	background-color: #f0ffff;
+}
+
+.cardNoRecipes h4 {
+	margin-left: 40px;
+}

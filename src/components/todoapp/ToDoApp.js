@@ -1,55 +1,76 @@
 import React, { Component } from 'react';
 import ToDoList from './ToDoList';
 import AddItemForm from './AddItemForm';
-
+import axios from 'axios';
 class ToDoApp extends Component {
 	state = {
 		title: 'ToDoApp',
-		items: [
-			{
-				id: 1,
-				label: 'dfdsfdsfdsfds',
-				checked: false
-			},
-			{
-				id: 2,
-				label: 'task2',
-				checked: false
-			},
-			{
-				id: 3,
-				label: 'task3',
-				checked: true
-			}
-		]
+		todos: []
+	};
+	componentDidMount() {
+		const userID = localStorage.getItem('userID');
+		axios
+			.get(`http://172.22.13.38:1323/todos/${userID}`)
+			.then((response) => {
+				console.log('response:', response);
+				this.setState({ todos: response.data });
+			})
+			.catch((error) => {
+				console.log('get todo list error:', error.response.data.Message);
+			});
+	}
+
+	addTaskHandler = (task) => {
+		const userID = localStorage.getItem('userID');
+		axios
+			.post(`http://172.22.13.38:1323/todos/${userID}`, {
+				title: task.title,
+				details: task.details,
+				due_date: task.due_date
+			})
+			.then((response) => {
+				const todos = [ ...this.state.todos, response.data ];
+				this.setState({ todos });
+			});
 	};
 
-	addItemHandler = (id, label) => {
-		const items = this.state.items;
-		const newItem = {
-			id: id,
-			label: label,
-			checked: false
-		};
-		items.push(newItem);
-		items.sort((a, b) => (a.checked && !b.checked ? -1 : 0));
-		this.setState({ items });
+	itemChangedHandler = (id) => {
+		axios
+			.get(`http://172.22.13.38:1323/todo/${id}/toggle`)
+			.then((response) => {
+				const todos = this.state.todos;
+				const checkedItem = todos.find((item) => item.id === id);
+				checkedItem.checked = response.data.checked;
+				this.setState({ todos: todos });
+			})
+			.catch((error) => {
+				console.log('todo toggle error:', error.response.data.Message);
+			});
 	};
 
-	itemChangedHandler = (id, checked) => {
-		const items = this.state.items;
-		const checkedItem = items.find((item) => item.id === id);
-		checkedItem.checked = checked;
-		items.sort((a, b) => (a.checked && !b.checked ? -1 : 0));
-		this.setState({ items });
+	deleteTaskHandler = (id) => {
+		axios.delete(`http://172.22.13.38:1323/todo/${id}`).then(() => {
+			const todos = this.state.todos.filter((todo) => todo.id !== id);
+			this.setState({ todos: todos });
+		});
+	};
+
+	detailsHandler = (id) => {
+		this.props.history.push(`/todo/${id}`);
 	};
 
 	render() {
-		const { title, items } = this.state;
+		const { title, todos } = this.state;
 		return (
-			<div>
-				<ToDoList title={title} items={items} onItemChange={this.itemChangedHandler} />
-				<AddItemForm onAddItem={this.addItemHandler} />
+			<div className="container">
+				<h3>{title}</h3>
+				<ToDoList
+					items={todos}
+					onItemChange={this.itemChangedHandler}
+					onDeleteTask={this.deleteTaskHandler}
+					onDetailsClick={this.detailsHandler}
+				/>
+				<AddItemForm onAddItem={this.addTaskHandler} />
 			</div>
 		);
 	}

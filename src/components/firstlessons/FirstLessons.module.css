@@ -1,0 +1,68 @@
+.App {
+	text-align: center;
+}
+
+.App2 {
+	color: lightseagreen;
+}
+
+.App3 {
+	font-size: 24px;
+	font-style: italic;
+}
+
+.title {
+	color: green;
+}
+.inputText {
+	composes: title;
+	font-weight: bold;
+}
+.homeworkTitle {
+	color: blue;
+}
+
+.insertedText {
+	composes: title;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+	margin: 10px auto;
+}
+
+:global(.customButton) {
+	min-width: 125px;
+	width: auto;
+	height: 30px;
+	letter-spacing: 0.5px;
+	line-height: 30px;
+	padding: 0 20px 0 20px;
+	font-size: 14px;
+	background-color: rgba(112, 107, 107, 0.959);
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed';
+	font-weight: bolder;
+	border: none;
+	cursor: pointer;
+}
+
+:global(.customButton:hover) {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+}
+
+:global(.componentStyling) {
+	background: linear-gradient(to top, gray, 30%, lightgray);
+	border-radius: 15px;
+	padding: 10px 0;
+	margin: 10px 0;
+}
+
+.loginContainer {
+	display: flex;
+}
