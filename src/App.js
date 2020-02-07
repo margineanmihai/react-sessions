@@ -6,7 +6,7 @@ import Login from './components/login/Login';
 import Logout from './components/login/Logout';
 import ToDoApp from './components/todoapp/ToDoApp';
 import ToDoDetails from './components/todoapp/ToDoDetails';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import PrivateRoute from './routing/PrivateRoute';
 
 class App extends Component {
@@ -43,17 +43,8 @@ class App extends Component {
 
 	render() {
 		return (
-			<BrowserRouter>
+			<BrowserRouter forceRefresh={true}>
 				<div className={styles.componentStyling}>
-					<div className={styles.navigation}>
-						<NavLink exact to="/">
-							Login{' '}
-						</NavLink>
-						<NavLink to="/register">Register</NavLink>
-						<NavLink to="/todoapp">ToDoApp</NavLink>
-						<NavLink to="/recipes">Recipes</NavLink>
-						<NavLink to="/logout">Logout</NavLink>
-					</div>
 					<Route path="/" exact component={Login} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />

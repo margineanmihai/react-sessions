@@ -8,9 +8,7 @@ class ToDoDetails extends Component {
 	};
 
 	componentDidMount() {
-		console.log('[ToDoDetails] props:', this.props);
 		axios.get(`http://172.22.13.38:1323/todo/${this.props.match.params.id}`).then((response) => {
-			console.log('todo get details = ', response);
 			this.setState({ todo: response.data });
 		});
 	}

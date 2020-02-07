@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ToDoList from './ToDoList';
 import AddItemForm from './AddItemForm';
 import axios from 'axios';
+import Nav from '../nav/Nav';
 class ToDoApp extends Component {
 	state = {
 		title: 'ToDoApp',
@@ -12,7 +13,6 @@ class ToDoApp extends Component {
 		axios
 			.get(`http://172.22.13.38:1323/todos/${userID}`)
 			.then((response) => {
-				console.log('response:', response);
 				this.setState({ todos: response.data });
 			})
 			.catch((error) => {
@@ -62,15 +62,18 @@ class ToDoApp extends Component {
 	render() {
 		const { title, todos } = this.state;
 		return (
-			<div className="container">
-				<h3>{title}</h3>
-				<ToDoList
-					items={todos}
-					onItemChange={this.itemChangedHandler}
-					onDeleteTask={this.deleteTaskHandler}
-					onDetailsClick={this.detailsHandler}
-				/>
-				<AddItemForm onAddItem={this.addTaskHandler} />
+			<div>
+				<Nav />
+				<div className="container">
+					<h3>{title}</h3>
+					<ToDoList
+						items={todos}
+						onItemChange={this.itemChangedHandler}
+						onDeleteTask={this.deleteTaskHandler}
+						onDetailsClick={this.detailsHandler}
+					/>
+					<AddItemForm onAddItem={this.addTaskHandler} />
+				</div>
 			</div>
 		);
 	}

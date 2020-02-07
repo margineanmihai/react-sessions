@@ -11,6 +11,10 @@
 	background-color: #f0ffff;
 }
 
+button {
+	margin-left: 5px;
+}
+
 .itemContainer {
 	margin: 5px 0;
 }
@@ -36,9 +40,6 @@
 	width: 140px;
 	text-align: left;
 	margin-left: 20px;
-}
-.inputBlock input {
-	/* width: 195px; */
 }
 
 .inputBlock * {

@@ -2,24 +2,6 @@
 	margin: 24px;
 }
 
-.navigation {
-	width: 100%;
-	text-align: center;
-}
-
-.navigation a {
-	color: dimgray;
-	padding: 10px;
-}
-
-.navigation a:hover {
-	color: coral;
-}
-
-:global(.active) {
-	color: coral !important;
-}
-
 :global(.customButton) {
 	min-width: 125px;
 	width: auto;

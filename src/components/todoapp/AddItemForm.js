@@ -23,7 +23,6 @@ class AddItemForm extends Component {
 	};
 	saveTask = (e) => {
 		const { title, details, dueDate } = this.state;
-		console.log('due_date = ', dueDate);
 		const task = { title: title, details: details, due_date: dueDate };
 		const { onAddItem } = this.props;
 		this.setState({ showForm: true, title: '', details: '', dueDate: '' });

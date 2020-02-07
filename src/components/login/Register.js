@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './Login.module.css';
-
+import Nav from '../nav/Nav';
 class Register extends Component {
 	state = {
 		email: '',
@@ -29,23 +29,26 @@ class Register extends Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-			<div className={styles.card}>
-				<h3>Register Form</h3>
+			<div>
+				<Nav />
+				<div className={styles.card}>
+					<h3>Register Form</h3>
 
-				<div className={styles.inputBlock}>
-					<label>Email: </label>
-					<input value={email} onChange={this.onEmailChange} />
-				</div>
+					<div className={styles.inputBlock}>
+						<label>Email: </label>
+						<input value={email} onChange={this.onEmailChange} />
+					</div>
 
-				<div className={styles.inputBlock}>
-					<label>Password: </label>
-					<input type="password" value={password} onChange={this.onPasswordChange} />
-				</div>
+					<div className={styles.inputBlock}>
+						<label>Password: </label>
+						<input type="password" value={password} onChange={this.onPasswordChange} />
+					</div>
 
-				<div className={styles.centerBtn}>
-					<button className="customButton" onClick={this.register}>
-						Save
-					</button>
+					<div className={styles.centerBtn}>
+						<button className="customButton" onClick={this.register}>
+							Save
+						</button>
+					</div>
 				</div>
 			</div>
 		);
