@@ -9,6 +9,10 @@
 	border-radius: 15px;
 	background-color: #f0ffff;
 }
+
+.recipeCard button {
+	cursor: pointer;
+}
 .ingredients {
 	display: flex;
 	justify-content: center;

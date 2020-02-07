@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styles from './ToDoApp.module.css';
+import withNavBar from '../../HOCs/withNavBar';
 import axios from 'axios';
 
 class ToDoDetails extends Component {
@@ -34,4 +35,4 @@ class ToDoDetails extends Component {
 	}
 }
 
-export default ToDoDetails;
+export default withNavBar(ToDoDetails);

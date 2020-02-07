@@ -1,24 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styles from './Recipe.module.css';
-const recipe = (props) => {
-	const ingredients = props.ingredients;
-	return (
-		<Fragment>
-			<div className={styles.recipeCard}>
-				<p>Title: {props.title}</p>
-                Ingredients:
-                <div className={styles.ingredients}>
-                <ul>
-                {ingredients.map((ingredient, index) => <li key={index}>{ingredient}</li>)}
-                </ul>
-                </div>
-				<p>Instructions: {props.instructions}</p>
-				<button className="customButton" onClick={props.deleteClickHandler}>
-					Delete
-				</button>
-			</div>
-		</Fragment>
-	);
-};
+import { withRouter } from 'react-router-dom';
+class Recipe extends Component {
+	detailsHandler = () => {
+		this.props.history.push(`recipes/${this.props.recipe.id}`);
+	};
 
-export default recipe;
+	render() {
+		const { recipe, deleteClickHandler } = this.props;
+		return (
+			<Fragment>
+				<div className={styles.recipeCard}>
+					<div>{recipe.title}</div>
+					<button onClick={() => deleteClickHandler(recipe.id)}>Delete</button>
+					<button onClick={this.detailsHandler}>Details</button>
+				</div>
+			</Fragment>
+		);
+	}
+}
+
+export default withRouter(Recipe);

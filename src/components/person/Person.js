@@ -14,7 +14,6 @@ class Person extends Component {
 	render() {
 		const { onNameClick, name, age, onNameInputChange } = this.props;
 		const { inputShowing } = this.state;
-		// console.log(inputShowing);
 		return (
 			<div>
 				<p className={personStyle.person}>

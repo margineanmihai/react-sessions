@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Recipe from './Recipe';
 import styles from './Recipes.module.css';
 import AddRecipe from './AddRecipe';
-import Nav from '../nav/Nav';
+import withNavBar from '../../HOCs/withNavBar';
 import axios from 'axios';
 
 class Recipes extends Component {
@@ -47,16 +47,11 @@ class Recipes extends Component {
 		const { recipes } = this.state;
 		return Array.isArray(recipes) && recipes.length > 0 ? (
 			<div>
-				<Nav />
 				<div className="container">
 					<h3>Recipes</h3>
 					<div className={styles.recipesContainer}>
 						{recipes.map((recipe) => (
-							<Recipe
-								key={recipe.id}
-								recipe={recipe}
-								deleteClickHandler={() => this.deleteRecipeHandler}
-							/>
+							<Recipe key={recipe.id} recipe={recipe} deleteClickHandler={this.deleteRecipeHandler} />
 						))}
 					</div>
 					<AddRecipe addRecipeHandler={this.addRecipeHandler} />
@@ -64,7 +59,6 @@ class Recipes extends Component {
 			</div>
 		) : (
 			<div>
-				<Nav />
 				<div className={styles.cardNoRecipes}>
 					<h3>Recipes</h3>
 					<h4>There are no recipes</h4>
@@ -75,4 +69,4 @@ class Recipes extends Component {
 	}
 }
 
-export default Recipes;
+export default withNavBar(Recipes);

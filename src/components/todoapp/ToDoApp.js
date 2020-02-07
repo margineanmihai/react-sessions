@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ToDoList from './ToDoList';
 import AddItemForm from './AddItemForm';
+import withNavBar from '../../HOCs/withNavBar';
 import axios from 'axios';
-import Nav from '../nav/Nav';
 class ToDoApp extends Component {
 	state = {
 		title: 'ToDoApp',
@@ -63,7 +63,6 @@ class ToDoApp extends Component {
 		const { title, todos } = this.state;
 		return (
 			<div>
-				<Nav />
 				<div className="container">
 					<h3>{title}</h3>
 					<ToDoList
@@ -79,4 +78,4 @@ class ToDoApp extends Component {
 	}
 }
 
-export default ToDoApp;
+export default withNavBar(ToDoApp);

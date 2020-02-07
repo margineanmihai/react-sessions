@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styles from './App.module.css';
 import Recipes from './components/recipes/Recipes';
+import RecipeDetail from './components/recipes/RecipeDetail';
 import Register from './components/login/Register';
 import Login from './components/login/Login';
-import Logout from './components/login/Logout';
 import ToDoApp from './components/todoapp/ToDoApp';
 import ToDoDetails from './components/todoapp/ToDoDetails';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -50,8 +50,8 @@ class App extends Component {
 					<Route path="/register" component={Register} />
 					<PrivateRoute path="/todoapp" component={ToDoApp} />
 					<PrivateRoute path="/todo/:id" component={ToDoDetails} />
-					<PrivateRoute path="/recipes" component={Recipes} />
-					<Route path="/logout" component={Logout} />
+					<PrivateRoute path="/recipes" exact component={Recipes} />
+					<PrivateRoute path="/recipes/:id" component={RecipeDetail} />
 				</div>
 			</BrowserRouter>
 		);
