@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styles from './ToDoApp.module.css';
 import withNavBar from '../../HOCs/withNavBar';
+import withTitle from '../../HOCs/withTitle';
 import axios from 'axios';
 
 class ToDoDetails extends Component {
@@ -35,4 +36,4 @@ class ToDoDetails extends Component {
 	}
 }
 
-export default withNavBar(ToDoDetails);
+export default withNavBar(withTitle(ToDoDetails, 'Todo item details with HOC'));

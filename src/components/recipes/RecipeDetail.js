@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import styles from './Recipe.module.css';
 import axios from 'axios';
 import withNavBar from '../../HOCs/withNavBar';
+import withTitle from '../../HOCs/withTitle';
 
 class RecipeDetails extends Component {
 	state = {
@@ -23,7 +24,8 @@ class RecipeDetails extends Component {
 				<div className={styles.recipeCard}>
 					{recipe ? (
 						<div>
-							<h3>{recipe.title}</h3>
+							<h4>Title</h4>
+							<p>{recipe.title}</p>
 							<h4>Ingredients</h4>
 							<ul>
 								{recipe.ingredients.map((ingredient) => (
@@ -42,4 +44,4 @@ class RecipeDetails extends Component {
 	}
 }
 
-export default withNavBar(RecipeDetails);
+export default withNavBar(withTitle(RecipeDetails, 'Recipe details with HOC'));
