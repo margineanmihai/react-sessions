@@ -11,29 +11,6 @@
 	background-color: #f0ffff;
 }
 
-.inputBlock {
-	margin: 10px 0;
-}
-.inputBlock input {
-	width: 195px;
-}
-
-.inputBlock * {
-	vertical-align: middle;
-}
-
-.inputBlock label {
-	display: inline-block;
-	width: 150px;
-	text-align: right;
-	margin-right: 20px;
-}
-
-.errorMsg {
-	margin: 20px 0;
-	color: red;
-}
-
 h3 {
 	text-align: center;
 }
